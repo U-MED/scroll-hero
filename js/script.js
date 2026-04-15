@@ -1,11 +1,10 @@
-// Initialize GSAP & ScrollTrigger
+
 gsap.registerPlugin(ScrollTrigger);
 
 const frameCount = 78;
 const animationObj = { frame: 0 };
 const carFrame = document.getElementById("carFrame");
 
-// 1. Preload Images
 const images = [];
 for (let i = 0; i <= frameCount; i++) {
     const img = new Image();
@@ -13,13 +12,11 @@ for (let i = 0; i <= frameCount; i++) {
     images.push(img);
 }
 
-// 2. Initial States
 gsap.set("#content", { opacity: 0, y: 50, color: "#ffffff" });
 gsap.set("#bgCar", { opacity: 0, y: 600, scale: 0.9 });
 gsap.set(".stat-label", { color: "#cccccc" });
 gsap.set("h2", { color: "#ffffff" });
 
-// 3. Create Scroll Timeline
 const tl = gsap.timeline({
     scrollTrigger: {
         trigger: "#hero",
@@ -31,7 +28,6 @@ const tl = gsap.timeline({
     },
 });
 
-// A. Car Sequence Animation
 tl.to(animationObj, {
     frame: frameCount,
     duration: 4,
@@ -45,7 +41,7 @@ tl.to(animationObj, {
     },
 });
 
-// B. Transition to Black & Move Out
+
 tl.to("#hero, #mainContainer", { backgroundColor: "#000000", duration: 1.5 }, "move-out");
 tl.to("#carFrame", {
     x: "150%",
@@ -54,7 +50,7 @@ tl.to("#carFrame", {
     ease: "power2.inOut",
 }, "move-out");
 
-// C. Welcome Text & Bottom Car Reveal
+
 tl.to("#content", {
     opacity: 1,
     y: 0,
@@ -70,5 +66,4 @@ tl.to("#bgCar", {
     ease: "power2.out",
 }, "move-out+=3");
 
-// D. Hold at the end
 tl.to({}, { duration: 2 });
