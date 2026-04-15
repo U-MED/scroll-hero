@@ -80,4 +80,4 @@ scroll-hero/
 - **Transition Delay**: The wait time for the black screen can be adjusted by changing the labels (e.g., `move-out+=2.5`) in the GSAP timeline.
 
 ---
-Created with ❤️ by Itz Fizz / Antigravity
+Created for Itz Fizz
