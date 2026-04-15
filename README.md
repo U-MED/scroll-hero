@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Scroll Hero | Cinematic Supercar Animation
 
-## Getting Started
+A high-performance, frame-by-frame scroll animation project built with a lightweight, framework-agnostic stack. This project features a seamless transition from a rotating supercar sequence to a premium dark-themed showcase.
 
-First, run the development server:
+## 🚀 Technologies Used & Functionality
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+This project utilizes a modern, hybrid tech stack to achieve high-performance animations without the weight of a framework:
+
+- **HTML5 (Structure)**: 
+  - Provides the semantic foundation for the viewport. 
+  - Uses the `<canvas>`-like approach with `<img>` swapping for the car sequence and absolute layering for the HUD (Heads-Up Display).
+
+- **CSS3 (Layout & Core Motion)**: 
+  - Defined in `css/style.css`. 
+  - Handles the base `100vh` section lockdowns, prevents horizontal layout breaks (`overflow-x: hidden`), and manages smooth transitions for background color shifts.
+
+- **Tailwind CSS (Utility Styling)**: 
+  - Used for rapid UI building and responsive adjustments. 
+  - Handles positioning (`absolute`, `inset-0`), z-index layering, and flexbox centering without writing verbose CSS.
+
+- **Bootstrap 5 (Grid & UI Components)**: 
+  - Leverages the **Bootstrap Grid System** (`row`, `col`) for the final result screen. 
+  - Ensures that statistical data points stay perfectly aligned and readable across different device widths using established typography classes.
+
+- **JavaScript (Vanilla Logic)**: 
+  - Located in `js/script.js`. 
+  - Manages the **image preloading engine** to ensure all 78 frames are cached in the browser's memory before the user starts scrolling, preventing "flicker."
+
+- **GSAP - GreenSock (Animation Engine)**: 
+  - The "brain" of the project. 
+  - Choreographs multiple complex animations: frame stepping, object horizontal movement (`xPercent`), and scale/opacity transitions simultaneously.
+
+- **ScrollTrigger (Scroll orchestration)**: 
+  - Bridges the gap between scroll position and animation time. 
+  - Uses a `scrub` value of `1`, meaning the animation catches up to the scroll position perfectly, creating a "hand-controlled" feel.
+
+---
+
+### 🛡️ Why use CDNs (Tailwind, Bootstrap, GSAP)?
+
+In this project, we prioritize **portability** and **performance**:
+1. **Zero Configuration**: No need for `npm install` or local build steps. The project works instantly upon opening `index.html`.
+2. **Optimized Delivery**: Files are served from global edge networks, often making them faster to load than local files if the user's browser has already cached them from other sites.
+3. **GitHub Ready**: Perfect for GitHub Pages or static hosting where you want to keep the repository size small and avoid checking in heavy `node_modules` folders.
+4. **Reliability**: Using official CDNs ensures that you are always using stable versions of these libraries.
+
+## ✨ Key Features
+
+- **78-Frame Image Sequence**: Smoothly animated supercar rotation triggered by user scroll.
+- **Seamless Black Transition**: Dramatic background color shift and text reveal as the car moves out of frame.
+- **Cinematic Reveal**: Delayed content entrance with a customized "bottom-to-top" slide effect for the final car showcasing.
+- **Dynamic Statistical HUD**: Animated performance, engagement, and satisfaction metrics.
+- **Fully Responsive**: Optimized for all screen sizes from mobile to ultra-wide desktops.
+
+## 📁 Project Structure
+
+```text
+scroll-hero/
+├── index.html         # Main project entry point (HTML / Bootstrap / Tailwind)
+├── css/
+│   └── style.css      # Custom styling and layout overrides
+├── js/
+│   └── script.js      # GSAP timeline logic and ScrollTrigger configuration
+├── public/
+│   ├── cars/          # Car rotation frame sequence (000-078)
+│   └── car.png        # High-res asset for the final reveal
+└── README.md          # Project documentation
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ How to Run Locally
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **Download/Clone** the repository to your local machine.
+2. Ensure you have an **active internet connection** (required for Tailwind, Bootstrap, and GSAP CDNs).
+3. Open **`index.html`** in any modern web browser (Chrome, Safari, Edge, or Firefox).
+4. **Scroll down** to experience the animation.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## ⚙️ Customization
 
-## Learn More
+- **Animation Speed**: To adjust how fast the animation plays out, modify the `end: "+=5000"` value in `js/script.js`. A higher value makes the scroll longer/slower.
+- **Transition Delay**: The wait time for the black screen can be adjusted by changing the labels (e.g., `move-out+=2.5`) in the GSAP timeline.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+Created with ❤️ by Itz Fizz / Antigravity
