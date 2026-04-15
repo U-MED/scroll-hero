@@ -1,4 +1,4 @@
-/* Custom Styles */
+
 body { 
     margin: 0; 
     overflow-x: hidden; 
@@ -15,12 +15,10 @@ body {
     justify-content: center; 
 }
 
-/* Ensure smooth transitions for colors */
 #mainContainer {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Bootstrap Overrides if needed */
 .navbar {
     z-index: 1000;
 }
